@@ -6,6 +6,7 @@ Provides animation along bezier and circular arcs.
 The animation engine in jQuery is focussed on single dimensional animation - hence it's difficult to animate two variables along a path.
 
 This simple plugin provides a method of multidimensional animation, and in particular provides a method for animating along bezier curves and arcs.
+It makes it also possible to rotate the shapes moving along the path to make them look like they're *following* the path (requires [jquery.transforms.js](https://github.com/louisremi/jquery.transform.js)).
 
 Bezier
 ---
@@ -27,7 +28,7 @@ var bezier_params = {
     }
   }
   
-$("my_elem").animate({path : new $.path.bezier(bezier_params)})
+$("my_elem").animate({path : new $.path.bezier(bezier_params, false)})
 </pre>
 
 Bezier curves are made form a start point, an end point each with a control point
@@ -37,6 +38,8 @@ Bezier curves are made form a start point, an end point each with a control poin
 * x,y indicate the coordinates at that point. Required
 * angle is the angle of the control point from the line joining the start and end. Optional, default is 0
 * length is the distance from the point to it's control point as a ratio of the distance from start to end. Optional, default is 1/3
+
+The boolean parameter of the $.path.bezier() function enables the rotate option (defaults to false).
 
 Arc
 ---
@@ -53,7 +56,7 @@ var arc_params = {
 		dir: -1
   }
   
-$("my_elem").animate({path : new $.path.arc(arc_params)})
+$("my_elem").animate({path : new $.path.arc(arc_params, false)})
 </pre>
 
 * center is the coords of the centre of an imaginary circle that contains the start and end point
@@ -61,6 +64,8 @@ $("my_elem").animate({path : new $.path.arc(arc_params)})
 * start is the angle of the start point. 0 is "North", measured clockwise
 * end is the angle of the start point. 0 is "North", measured clockwise
 * dir is the direction to move in. Only required if not obvious from start and end (e.g. if start is 100, end is 30, but you want to animate clockwise)
+
+The boolean parameter of the $.path.arc() function enables the rotate option (defaults to false).
 
 Other Paths
 ----
@@ -86,6 +91,7 @@ Links
 
 * [Demo](http://weepy.github.com/jquery.path)
 * [Javascript File](http://github.com/weepy/jquery.path/raw/master/jquery.path.js)
+* [Transform plugin](https://github.com/louisremi/jquery.transform.js/raw/master/jquery.transform.light.js) (required for rotate) 
 * [Github Project](http://github.com/weepy/jquery.path)
 * [Issue Tracker](http://github.com/weepy/jquery.path/issues)
 
@@ -94,8 +100,9 @@ Compatibility
 
 Tested in
 
-* Firefox 3.5
-* Safari 4
+* Firefox
+* Safari
+* Chrome
 * IE 6, 7, 8
 
 

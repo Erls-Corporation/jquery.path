@@ -64,8 +64,8 @@
         css.prevX = this.x;
         css.prevY = this.y;
       }
-      css.x = this.x = ( this.p1[0]*f1 + this.p2[0]*f2 +this.p3[0]*f3 + this.p4[0]*f4 +.5 )|0;
-      css.y = this.y = ( this.p1[1]*f1 + this.p2[1]*f2 +this.p3[1]*f3 + this.p4[1]*f4 +.5 )|0;
+      css.x = this.x = this.p1[0]*f1 + this.p2[0]*f2 +this.p3[0]*f3 + this.p4[0]*f4;
+      css.y = this.y = this.p1[1]*f1 + this.p2[1]*f2 +this.p3[1]*f3 + this.p4[1]*f4;
       css.left = css.x + "px";
       css.top = css.y + "px";
       return css;
@@ -95,8 +95,8 @@
         css.prevX = this.x;
         css.prevY = this.y;
       }
-      css.x = this.x = ( Math.sin(a) * this.radius + this.center[0] +.5 )|0;
-      css.y = this.y = ( Math.cos(a) * this.radius + this.center[1] +.5 )|0;
+      css.x = this.x = Math.sin(a) * this.radius + this.center[0];
+      css.y = this.y = Math.cos(a) * this.radius + this.center[1];
       css.left = css.x + "px";
       css.top = css.y + "px";
       return css;
@@ -106,7 +106,7 @@
   $.fx.step.path = function(fx) {
     var css = fx.end.css( 1 - fx.pos );
     if ( css.prevX != null ) {
-      $.cssHooks.transform.set( fx.elem, "rotate(" + Math.atan2(css.prevY - css.y, css.prevX - css.x) + ")" );
+    	$.cssHooks.transform.set( fx.elem, "rotate(" + Math.atan2(css.prevY - css.y, css.prevX - css.x) + ")" );
     }
     fx.elem.style.top = css.top;
     fx.elem.style.left = css.left;
